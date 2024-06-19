@@ -38,7 +38,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 ## Tasks
 ## Tasks
 - [0. Executing basic javascript with Node JS](./0-console.js)
-In `0-console.js`, a function `displayMessage` prints a string argument to STDOUT.
+<br>In `0-console.js`, a function `displayMessage` prints a string argument to STDOUT.
 - [1. Using Process stdin](./1-stdin.js)
 - [2. Reading a file synchronously with Node JS](./2-read_file.js)
 - [3. Reading a file asynchronously with Node JS](./3-read_file_async.js)
