@@ -36,22 +36,21 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - Directory: `0x05-Node_JS_basic`
 
 ## Tasks
-## Tasks
-- [0. Executing basic javascript with Node JS](./0-console.js)
+* [0-console.js](./0-console.js)
 <br>In `0-console.js`, a function `displayMessage` prints a string argument to STDOUT.
-- [1. Using Process stdin](./1-stdin.js)
+* [1-stdin.js](./1-stdin.js)
 <br>In `1-stdin.js`, prompts the user for their name, reads input from stdin, and prints the user's name.
-- [2. Reading a file synchronously with Node JS](./2-read_file.js)
+* [2-read_file.js](./2-read_file.js)
 <br>In `2-read_file.js`, a function `countStudents` reads `database.csv` synchronously, counts students in each field, and logs the results.
-- [3. Reading a file asynchronously with Node JS](./3-read_file_async.js)
+* [3-read_file_async.js](./3-read_file_async.js)
 <br>In `3-read_file_async.js`, `countStudents` function reads `database.csv` asynchronously, counts students in each field, and logs the results using promises.
-- [4. Create a small HTTP server using Node's HTTP module](./4-http.js)
+* [4-http.js](./4-http.js)
 <br>In `4-http.js`, creates a basic HTTP server using Node's `http` module on port 1245 that responds with "Hello Holberton School!" for any endpoint.
-- [5. Create a more complex HTTP server using Node's HTTP module](./5-http.js)
+* [5-http.js](./5-http.js)
 <br>In `5-http.js`, creates a HTTP server on port 1245 using Node's `http` module. Responds with "Hello Holberton School!" for `/` and lists students from `database.csv` for `/students`.
-- [6. Create a small HTTP server using Express](./6-http_express.js)
+* [6-http_express.js](./6-http_express.js)
 <br>In `6-http_express.js`, creates an HTTP server using Express on port 1245 that responds with "Hello Holberton School!" for the endpoint `/`.
-- [7. Create a more complex HTTP server using Express](./7-http_express.js)
+* [7-http_express.js](./7-http_express.js)
 <br>In `7-http_express.js`, creates an HTTP server using Express on port 1245. Responds with "Hello Holberton School!" for `/` and lists students from `database.csv` for `/students`.
-- [8. Organize a complex HTTP server using Express](./full_server)
+* [full_server](./full_server)
 <br>Creates a structured Express server in the `full_server` directory, using ES6 with Babel-node. Includes controllers for homepage and students, routes for `/` and `/students`, and utilizes `readDatabase` utility for data access.
