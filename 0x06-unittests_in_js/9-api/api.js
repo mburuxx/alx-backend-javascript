@@ -7,8 +7,20 @@ app.get('/cart/:id(\\d+)', (req, res) => {
   res.send(`Payment methods for cart ${id}`);
 });
 
+// Custom 404 handler
 app.use((req, res) => {
-  res.status(404).send('Not Found');
+  res.status(404).send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Error</title>
+    </head>
+    <body>
+      <pre>Cannot GET ${req.originalUrl}</pre>
+    </body>
+    </html>
+  `);
 });
 
 app.listen(port, () => {
