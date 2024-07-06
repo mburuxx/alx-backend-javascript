@@ -25,20 +25,18 @@ const countStudents = (dataPath) => {
 
   for (let i = 1; i < fileLines.length; i += 1) {
     const line = fileLines[i].trim();
-    if (line === '') {
-      continue;
-    }
+    if (line !== '') {
+      const studentRecord = line.split(',');
+      const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
+      const field = studentRecord[studentRecord.length - 1];
 
-    const studentRecord = line.split(',');
-    const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
-    const field = studentRecord[studentRecord.length - 1];
-
-    if (field === 'CS' || field === 'SWE') {
-      const studentEntry = {};
-      studentPropNames.forEach((propName, idx) => {
-        studentEntry[propName] = studentPropValues[idx];
-      });
-      studentGroups[field].push(studentEntry);
+      if (field === 'CS' || field === 'SWE') {
+        const studentEntry = {};
+        studentPropNames.forEach((propName, idx) => {
+          studentEntry[propName] = studentPropValues[idx];
+        });
+        studentGroups[field].push(studentEntry);
+      }
     }
   }
 
