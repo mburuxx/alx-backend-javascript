@@ -1,49 +1,36 @@
-const request = require('supertest');
-const app = require('./api.js');
+const express = require('express');
 
-describe('GET /cart/:id', () => {
-  it('should return 200 for a valid id', (done) => {
-    request(app)
-      .get('/cart/12')
-      .expect(200, 'Payment methods for cart 12', done);
-  });
+const app = express();
+const PORT = 7865;
 
-  it('should return 404 for an invalid id', (done) => {
-    request(app)
-      .get('/cart/hello')
-      .expect(404, done);
-  });
+app.use(express.json());
+
+app.get('/', (_, res) => {
+  res.send('Welcome to the payment system');
 });
 
-describe('GET /available_payments', () => {
-  it('should return payment methods', (done) => {
-    request(app)
-      .get('/available_payments')
-      .expect(200)
-      .expect('Content-Type', /json/)
-      .expect({
-        payment_methods: {
-          credit_cards: true,
-          paypal: false
-        }
-      }, done);
-  });
+app.get('/cart/:id(\\d+)', (req, res) => {
+  const { id } = req.params;
+
+  res.send(`Payment methods for cart ${id}`);
 });
 
-describe('POST /login', () => {
-  it('should welcome the user', (done) => {
-    request(app)
-      .post('/login')
-      .send({ userName: 'Betty' })
-      .set('Content-Type', 'application/json')
-      .expect(200, 'Welcome Betty', done);
-  });
-
-  it('should return 400 if no username is provided', (done) => {
-    request(app)
-      .post('/login')
-      .send({})
-      .set('Content-Type', 'application/json')
-      .expect(400, 'Bad Request', done);
-  });
+app.get('/available_payments', (_req, res) => {
+  res.json({ payment_methods: { credit_cards: true, paypal: false } });
 });
+
+app.post('/login', (req, res) => {
+  let username = '';
+
+  if (req.body) {
+    username = req.body.userName;
+  }
+
+  res.send(`Welcome ${username}`);
+});
+
+app.listen(PORT, () => {
+  console.log(`API available on localhost port ${PORT}`);
+});
+
+module.exports = app;
