@@ -8,11 +8,12 @@ class StudentsController {
       let responseText = 'This is the list of our students\n';
       const fields = Object.keys(students).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
       fields.forEach((field) => {
-        responseText += `Number of students in ${field}: ${students[field].length}. List: ${students[field].join(', ')}\n`;
+        const sortedStudents = students[field].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+        responseText += `Number of students in ${field}: ${sortedStudents.length}. List: ${sortedStudents.join(', ')}\n`;
       });
       res.status(200).send(responseText.trim());
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).send('Cannot load the database');
     }
   }
 
