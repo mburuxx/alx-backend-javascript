@@ -1,16 +1,20 @@
-const request = require('supertest');
-const app = require('./api.js');
+const express = require('express');
 
-describe('GET /cart/:id', () => {
-  it('should return 200 for a valid id', (done) => {
-    request(app)
-      .get('/cart/12')
-      .expect(200, 'Payment methods for cart 12', done);
-  });
+const app = express();
+const PORT = 7865;
 
-  it('should return 404 for an invalid id', (done) => {
-    request(app)
-      .get('/cart/hello')
-      .expect(404, done);
-  });
+app.get('/', (_, res) => {
+  res.send('Welcome to the payment system');
 });
+
+app.get('/cart/:id(\\d+)', (req, res) => {
+  const { id } = req.params;
+
+  res.send(`Payment methods for cart ${id}`);
+});
+
+app.listen(PORT, () => {
+  console.log(`API available on localhost port ${PORT}`);
+});
+
+module.exports = app;

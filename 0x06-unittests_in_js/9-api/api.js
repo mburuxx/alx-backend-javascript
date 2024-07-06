@@ -1,30 +1,20 @@
 const express = require('express');
+
 const app = express();
-const port = 7865;
+const PORT = 7865;
+
+app.get('/', (_, res) => {
+  res.send('Welcome to the payment system');
+});
 
 app.get('/cart/:id(\\d+)', (req, res) => {
   const { id } = req.params;
+
   res.send(`Payment methods for cart ${id}`);
 });
 
-// Custom 404 handler
-app.use((req, res) => {
-  res.status(404).send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <title>Error</title>
-    </head>
-    <body>
-      <pre>Cannot GET ${req.originalUrl}</pre>
-    </body>
-    </html>
-  `);
-});
-
-app.listen(port, () => {
-  console.log(`API available on localhost port ${port}`);
+app.listen(PORT, () => {
+  console.log(`API available on localhost port ${PORT}`);
 });
 
 module.exports = app;
