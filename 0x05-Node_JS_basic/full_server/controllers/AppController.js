@@ -1,5 +1,5 @@
 /**
- * It accepts arguments and returns a 200 status and the message 
+ * It accepts arguments and returns a 200 status and the message
  *
  */
 class AppController {
@@ -9,4 +9,3 @@ class AppController {
 }
 
 export default AppController;
-module.exports = AppController;
