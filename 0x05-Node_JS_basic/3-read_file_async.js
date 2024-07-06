@@ -19,13 +19,17 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 
     for (const line of fileLines.slice(1)) {
       const studentRecord = line.split(',');
-      const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
-      const field = studentRecord[studentRecord.length - 1];
-      if (!Object.keys(studentGroups).includes(field)) {
-        studentGroups[field] = [];
+      if (studentRecord.length === dbFieldNames.length) { // Ensure the line has the correct number of fields
+        const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
+        const field = studentRecord[studentRecord.length - 1].trim(); // Trim any extra spaces
+        if (field && field !== '') { // Ensure the field is not empty
+          if (!Object.keys(studentGroups).includes(field)) {
+            studentGroups[field] = [];
+          }
+          const studentEntries = studentPropNames.map((propName, idx) => [propName, studentPropValues[idx].trim()]);
+          studentGroups[field].push(Object.fromEntries(studentEntries));
+        }
       }
-      const studentEntries = studentPropNames.map((propName, idx) => [propName, studentPropValues[idx]]);
-      studentGroups[field].push(Object.fromEntries(studentEntries));
     }
 
     const totalStudents = Object.values(studentGroups).reduce((pre, cur) => pre + cur.length, 0);
