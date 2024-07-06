@@ -30,7 +30,6 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - The TypeScript compiler should not show any warning or error when compiling your code
 
 ### Configuration Files
-Please use these files for the following tasks:
 
 - `package.json`
 - `.eslintrc.js`
